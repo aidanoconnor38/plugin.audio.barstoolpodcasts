@@ -137,7 +137,7 @@ def listShows():
         podcast = podcast.split(';')
         query = urllib.urlencode({'mode': 'GE', 'url': podcast[2], 'image': podcast[1]})
 
-        infoLabels = {'Title': podcast[0], 'FileName': podcast[0], 'Plot': podcast[3]}
+        infoLabels = {'Title': podcast[0], 'FileName': podcast[0], 'Plot': '[B]' + podcast[0] + '[/B]\n' + podcast[3]}
         u = 'plugin://plugin.audio.barstoolpodcasts/?' + query
 
         li = xbmcgui.ListItem(podcast[0], iconImage=podcast[1])
@@ -162,7 +162,7 @@ def getEpisodes(source, image):
 
         desc = soup.a['title'].replace('<p>', '').replace('</p>', '')
         desc = ''.join([i if ord(i) < 128 else ' ' for i in desc]).strip()
-        infoLabels = {'Title': title, 'FileName': title, 'Plot' : desc}
+        infoLabels = {'Title': title, 'FileName': title, 'Plot' : '[B]' + title + '[/B]\n' + desc}
 
         query = urllib.urlencode({'mode': 'PE', 'url': link})
         u = 'plugin://plugin.audio.barstoolpodcasts/?' + query
